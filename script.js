@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function setVolume(level) {
+        audio.volume = Math.max(0, Math.min(1, level));
+    }
 
     setTimeout(function() {
         if (loaderContainer) loaderContainer.style.display = 'none';
@@ -63,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 switch (command.toLowerCase()) {
                     case 'start':
-                        outputArea.innerHTML += '<p>About me: I am Aradhya Shaswat, a 15 year old Software Developer currently living in India. I have researched on various topics related to Biotechonlogy, AgriFarming, Cyber Security and Data Science. To explore more commands, type "help".</p>';
+                        outputArea.innerHTML += '<p>About me: I am Aradhya Shaswat, a 15-year-old Software Developer currently living in India. I have researched various topics related to Biotechnology, AgriFarming, Cyber Security, and Data Science. To explore more commands, type "help".</p>';
                         break;
                     case 'clear':
                         outputArea.innerHTML = '';
@@ -72,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         outputArea.innerHTML += '<p>Available commands:</p>';
                         outputArea.innerHTML += '<ul>';
                         outputArea.innerHTML += '<li>music - Use music play, stop to control background music</li>';
+                        outputArea.innerHTML += '<li>volume up - Increase the volume of background music</li>';
+                        outputArea.innerHTML += '<li>volume down - Decrease the volume of background music</li>';
                         outputArea.innerHTML += '<li>start - Display information about me</li>';
                         outputArea.innerHTML += '<li>clear - Clear the screen</li>';
                         outputArea.innerHTML += '<li>help - Display this help message</li>';
@@ -85,13 +90,30 @@ document.addEventListener('DOMContentLoaded', function() {
                         outputArea.innerHTML += '<p>Email: trentarev@gmail.com</p>';
                         break;
                     case 'prj':
-                        outputArea.innerHTML += '<p>TRENTAREV.com, Friendbase.tech, DiskDefender.IO</p>';
+                        outputArea.innerHTML += '<p>Projects:</p>';
+                        outputArea.innerHTML += '<ul>';
+                        outputArea.innerHTML += '<li><b>TRENTAREV.com:</b> Anonymous Stock Calling Platform</li>';
+                        outputArea.innerHTML += '<li><b>Friendbase.tech:</b> A social platform for connecting you with yourself.</li>';
+                        outputArea.innerHTML += '<li><b>DiskDefender.IO:</b> A industry ready PC Optimizer</li>';
+                        outputArea.innerHTML += '</ul>';
                         break;
                     case 'exp':
-                        outputArea.innerHTML += '<p>COO at TRENTAREV, Software Developer at Kasper Infotech, CEO at Friendbase</p>';
+                        outputArea.innerHTML += '<p>Experience:</p>';
+                        outputArea.innerHTML += '<ul>';
+                        outputArea.innerHTML += '<li><b>COO at TRENTAREV:</b> Leading operations and strategic initiatives.</li>';
+                        outputArea.innerHTML += '<li><b>Software Developer at Kasper Infotech:</b> Developing software solutions for various clients.</li>';
+                        outputArea.innerHTML += '<li><b>CEO at Friendbase:</b> Managing the overall direction and strategy of the company.</li>';
+                        outputArea.innerHTML += '</ul>';
                         break;
                     case 'tools':
-                        outputArea.innerHTML += '<p>C++, C#, C, Python, JS, Flutter, Ruby on Rails, Flutter, Figma, MERN Stack, Next.JS, Django, Discord.py, NeoVim, VSC, VS, Unity3D, Unreal Engine.</p>';
+                        outputArea.innerHTML += '<p>Programming Languages and Tools:</p>';
+                        outputArea.innerHTML += '<ul>';
+                        outputArea.innerHTML += '<li><b>Languages:</b> C++, C#, C, Python, JavaScript</li>';
+                        outputArea.innerHTML += '<li><b>Frameworks:</b> Flutter, Ruby on Rails, MERN Stack, Next.JS, Django</li>';
+                        outputArea.innerHTML += '<li><b>Design Tools:</b> Figma</li>';
+                        outputArea.innerHTML += '<li><b>Development Tools:</b> NeoVim, Visual Studio Code, Visual Studio, Unity3D, Unreal Engine</li>';
+                        outputArea.innerHTML += '<li><b>Other Tools:</b> Discord.py, Discord.js</li>';
+                        outputArea.innerHTML += '</ul>';
                         break;
                     case 'music play':
                         playBackgroundMusic();
@@ -100,6 +122,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     case 'music stop':
                         pauseBackgroundMusic();
                         outputArea.innerHTML += '<p>Background music paused.</p>';
+                        break;
+                    case 'volume up':
+                        setVolume(audio.volume + 0.1);
+                        outputArea.innerHTML += `<p>Volume increased to ${(audio.volume * 100).toFixed(0)}%.</p>`;
+                        break;
+                    case 'volume down':
+                        setVolume(audio.volume - 0.1);
+                        outputArea.innerHTML += `<p>Volume decreased to ${(audio.volume * 100).toFixed(0)}%.</p>`;
                         break;
                     default:
                         outputArea.innerHTML += `<p>${command}: command not found</p>`;
