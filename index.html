@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <script src="script.js"></script>
+    <div class="loader-container" id="loader-container">
+        <div class="loader"></div>
+        <div class="loader-label">TermifyOS</div>
+    </div>
     <div class="terminal" id="terminal">
         <div class="screen">
             <div class="output">
@@ -18,14 +21,17 @@
                 <span class="prompt">$</span>
                 <input type="text" id="terminal-input" autofocus>
             </div>
+            <div class="output" id="output">
+            </div>
         </div>
     </div>
-    <div id="shortcut-bar">
+    <div id="shortcut-bar" class="shortcut-bar">
         <ul>
             <li><span class="key">Enter</span> to submit command</li>
             <li><span class="key">Up Arrow</span> to recall previous command</li>
             <li><span class="key">Down Arrow</span> to recall next command</li>
         </ul>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
