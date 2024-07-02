@@ -1,0 +1,134 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: #fff;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.terminal {
+    width: 600px;
+    height: 400px;
+    background-color: #000;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid #00ff00;
+    position: relative;
+    animation: flicker 0.1s infinite alternate-reverse;
+    cursor: text; 
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    line-height: 1.4;
+    position: relative;
+}
+
+.output {
+    margin-bottom: 10px;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    color: #00ff00;
+}
+
+.prompt {
+    margin-right: 10px;
+}
+
+input[type="text"] {
+    background: none;
+    border: none;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    width: calc(100% - 30px);
+    outline: none;
+    padding: 0;
+    margin: 0;
+    caret-color: #00ff00;
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+.terminal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 0, 0.1); 
+    z-index: 1;
+}
+
+.terminal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 20px 5px #0f0, 0 0 40px 10px #0f0, 0 0 60px 15px #0f0, 0 0 80px 20px #0f0;
+    opacity: 0.5;
+    z-index: 2;
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.9;
+    }
+    50% {
+        opacity: 0.95;
+    }
+    100% {
+        opacity: 0.85;
+    }
+}
+
+#shortcut-bar {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 100; 
+}
+
+#shortcut-bar p {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#shortcut-bar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#shortcut-bar li {
+    margin-bottom: 5px;
+}
+
+.key {
+    background-color: #00ff00;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-weight: bold;
+}
