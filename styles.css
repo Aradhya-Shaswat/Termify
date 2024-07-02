@@ -11,6 +11,11 @@ body, html {
     overflow: hidden;
 }
 
+.heading {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
 .loader-container {
     position: fixed;
     top: 0;
